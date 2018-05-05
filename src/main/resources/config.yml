@@ -1,0 +1,3 @@
+power: 5.0
+senderMessage: '&bYou have punched %s!'
+punchedMessage: '&bYou have been punched by %s!'

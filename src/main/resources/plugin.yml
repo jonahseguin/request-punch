@@ -1,0 +1,19 @@
+name: Punch
+main: com.jonahseguin.punch.Punch
+version: 1.0.0
+author: Jonah Seguin (Shawckz)
+website: jonahseguin.com | onah.io | purified.io
+description: Punch plugin completed by request
+prefix: Punch
+
+commands:
+  punch:
+    description: Punch a player!
+    usage: "/punch <player>"
+    permission: punch.use
+
+permissions:
+  punch.use:
+    description: Permission to punch a player
+    default: op
+
