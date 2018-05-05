@@ -40,7 +40,8 @@ public class PunchCommand implements CommandExecutor {
                     Player player = Bukkit.getPlayer(args[0]);
                     if (player != null && player.isOnline()) {
 
-                        player.setVelocity(player.getVelocity().add(new Vector(add, addY, add)).multiply(power));
+                        player.setVelocity(player.getLocation().getDirection().add(new Vector(add, addY, add)).multiply(power));
+                        
 
                         if (punchedMessage != null && punchedMessage.length() > 0) {
                             player.sendMessage(ChatColor.translateAlternateColorCodes('&', String.format(punchedMessage, sender.getName())));
