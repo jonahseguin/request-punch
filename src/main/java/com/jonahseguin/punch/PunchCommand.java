@@ -21,12 +21,16 @@ public class PunchCommand implements CommandExecutor {
     private final String senderMessage;
     private final String punchedMessage;
     private final double power;
+    private final double add;
+    private final double addY;
 
     public PunchCommand(Punch instance) {
         this.instance = instance;
         this.senderMessage = instance.getConfig().getString("senderMessage");
         this.punchedMessage = instance.getConfig().getString("punchedMessage");
         this.power = instance.getConfig().getDouble("power");
+        this.add = instance.getConfig().getDouble("add");
+        this.addY = instance.getConfig().getDouble("addY");
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -36,10 +40,14 @@ public class PunchCommand implements CommandExecutor {
                     Player player = Bukkit.getPlayer(args[0]);
                     if (player != null && player.isOnline()) {
 
-                        player.setVelocity(player.getVelocity().add(new Vector(power, 1, power)).multiply(power));
+                        player.setVelocity(player.getVelocity().add(new Vector(add, addY, add)).multiply(power));
 
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', String.format(punchedMessage, sender.getName())));
-                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', String.format(senderMessage, player.getName())));
+                        if (punchedMessage != null && punchedMessage.length() > 0) {
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', String.format(punchedMessage, sender.getName())));
+                        }
+                        if (senderMessage != null && senderMessage.length() > 0) {
+                            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', String.format(senderMessage, player.getName())));
+                        }
                     }
                     else {
                         sender.sendMessage(ChatColor.RED + "Player '" + args[0] + "' not found.");

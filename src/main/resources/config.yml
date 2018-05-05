@@ -1,3 +1,5 @@
-power: 5.0
+power: 3.0
+add: 0.75
+addY: 1.5
 senderMessage: '&bYou have punched %s!'
 punchedMessage: '&bYou have been punched by %s!'
